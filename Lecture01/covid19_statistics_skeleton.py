@@ -2,7 +2,7 @@ def normalize_data(n_cases, n_people, scale):
     # TODO) Calculate the number of cases per its population
     norm_cases = []
     for idx, n in enumerate(n_cases):
-        norm_cases.append(0)
+        norm_cases.append((n / n_people[idx]) * scale)
     return norm_cases
 
 regions  = ['Seoul', 'Gyeongi', 'Busan', 'Gyeongnam', 'Incheon', 'Gyeongbuk', 'Daegu', 'Chungnam', 'Jeonnam', 'Jeonbuk', 'Chungbuk', 'Gangwon', 'Daejeon', 'Gwangju', 'Ulsan', 'Jeju', 'Sejong']
@@ -26,6 +26,4 @@ print()
 
 # TODO) Print COVID-19 new cases by region
 for idx, region in enumerate(regions):
-    print(regions[idx])
-    print(n_people[idx])
-    print(norm_covid[idx])
+    print(regions[idx], n_people[idx], norm_covid[idx])
