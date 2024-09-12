@@ -25,5 +25,8 @@ for idx, pop in enumerate(n_people):
 print()
 
 # TODO) Print COVID-19 new cases by region
+print('----------------------------------------------------------')
+print()
+
 for idx, region in enumerate(regions):
-    print(regions[idx], n_people[idx], norm_covid[idx])
+    print('| %s | %d | %.1f |' % (regions[idx], n_people[idx], norm_covid[idx]))
