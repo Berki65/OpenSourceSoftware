@@ -1,3 +1,8 @@
+"""
+Homework of Berkay Bentetik - 24170078
+Python Lab 01 - COVID-19 Statistics
+"""
+
 def normalize_data(n_cases, n_people, scale):
     # TODO) Calculate the number of cases per its population
     norm_cases = []
