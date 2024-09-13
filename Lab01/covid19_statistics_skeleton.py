@@ -5,7 +5,7 @@ Python Lab 01 - COVID-19 Statistics
 
 
 def normalize_data(n_cases, n_people, scale):
-    # TODO) Calculate the number of cases per its population
+    # Calculate the number of cases per its population
     norm_cases = []
     for idx, n in enumerate(n_cases):
         norm_cases.append((n / n_people[idx]) * scale)  # Scale could be 1000000 but its better this way
@@ -18,8 +18,8 @@ n_people = [9550227, 13530519, 3359527, 3322373, 2938429, 2630254, 2393626, 2118
             1454679, 1441970, 1124459, 675883, 365309]  # 2021-08
 n_covid = [644, 529, 38, 29, 148, 28, 41, 62, 23, 27, 27, 33, 16, 40, 20, 5, 4]  # 2021-09-21
 
-sum_people = sum(n_people)  # TODO) The total number of people
-sum_covid = sum(n_covid)  # TODO) The total number of new cases
+sum_people = sum(n_people)  # The total number of people
+sum_covid = sum(n_covid)  # The total number of new cases
 norm_covid = normalize_data(n_covid, n_people, 1000000)  # Normalize Data Function
 
 # Print population by region
@@ -30,14 +30,14 @@ print('| Region | Population | Ratio (%) |')
 print('| ------ | ---------- | --------- |')
 
 for idx, pop in enumerate(n_people):
-    ratio = (pop / sum_people) * 1000000  # TODO) The ratio of new cases to the total
+    ratio = (pop / sum_people) * 1000000  # The ratio of new cases to the total
     print('| %s | %d | %.1f |' % (regions[idx], pop, ratio))
 
 print()
 print('----------------------------------------------------------')
 print()
 
-# TODO) Print COVID-19 new cases by region
+# Print COVID-19 new cases by region
 print('### Korean COVID-19 New Cases by Region')
 print('* Total new cases:', sum_covid)
 print()
