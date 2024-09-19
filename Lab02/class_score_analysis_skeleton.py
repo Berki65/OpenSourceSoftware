@@ -4,12 +4,13 @@ def read_data(filename):
     # TODO) Read `filename` as a list of integer numbers
     with open(filename, 'r') as file:
         reader = csv.reader(file)
-        midterm_scores = []
-        final_scores = []
+        data = []
+        next(reader)  # Skip the header row
         for row in reader:
-            midterm_scores.append(int(row[0]))
-            final_scores.append(int(row[1]))
-    return midterm_scores, final_scores
+            midterm_score = int(row[0])
+            final_score = int(row[1])
+            data.append((midterm_score, final_score))
+    return data
 
 def calc_weighted_average(data_2d, weight):
     # TODO) Calculate the weighted averages of each row of `data_2d`
@@ -21,9 +22,10 @@ def calc_weighted_average(data_2d, weight):
 def analyze_data(data_1d):
     # TODO) Derive summary of the given `data_1d`
     # Note) Please don't use NumPy and other libraries. Do it yourself.
-    mean = 0
-    var = 0
-    median = 0
+    n = len(data_1d)
+    mean = sum(data_1d) / n
+    var = sum((x - mean) ** 2 for x in data_1d) / n
+    median = sorted(data_1d)[n // 2] if n % 2 == 1 else (sorted(data_1d)[n // 2 - 1] + sorted(data_1d)[n // 2]) / 2
     return mean, var, median, min(data_1d), max(data_1d)
 
 
