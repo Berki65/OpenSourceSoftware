@@ -2,14 +2,20 @@ import csv
 
 def read_data(filename):
     # TODO) Read `filename` as a list of integer numbers
-    with open(filename, 'r', newline='') as file:
+    with open(filename, 'r') as file:
         reader = csv.reader(file)
-        data = [list(map(int, row)) for row in reader]
-        return data
+        midterm_scores = []
+        final_scores = []
+        for row in reader:
+            midterm_scores.append(int(row[0]))
+            final_scores.append(int(row[1]))
+    return midterm_scores, final_scores
 
 def calc_weighted_average(data_2d, weight):
     # TODO) Calculate the weighted averages of each row of `data_2d`
     average = []
+    for scores in data_2d:
+        average.append(sum([s * w for s, w in zip(scores, weight)]))
     return average
 
 def analyze_data(data_1d):
@@ -19,6 +25,7 @@ def analyze_data(data_1d):
     var = 0
     median = 0
     return mean, var, median, min(data_1d), max(data_1d)
+
 
 if __name__ == '__main__':
     data = read_data('data/class_score_en.csv')
