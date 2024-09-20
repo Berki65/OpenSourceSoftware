@@ -1,3 +1,8 @@
+"""
+Assignment from Berkay Bentetik - 24170078
+Python Lab 02 - Midterm and Final Exam Analysis
+"""
+
 import csv
 
 def read_data(filename):
