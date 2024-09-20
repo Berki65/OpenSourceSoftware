@@ -4,7 +4,7 @@ def read_data(filename):
     with open(filename, 'r') as file:
         reader = csv.reader(file)
         data = []
-        next(reader)  # Skip the header row
+        next(reader)  # Skips the header row otherwise error occurs
         for row in reader:
             midterm_score = int(row[0])
             final_score = int(row[1])
