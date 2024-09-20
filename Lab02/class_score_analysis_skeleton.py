@@ -1,7 +1,6 @@
 import csv
 
 def read_data(filename):
-    # TODO) Read `filename` as a list of integer numbers
     with open(filename, 'r') as file:
         reader = csv.reader(file)
         data = []
@@ -13,14 +12,12 @@ def read_data(filename):
     return data
 
 def calc_weighted_average(data_2d, weight):
-    # TODO) Calculate the weighted averages of each row of `data_2d`
     average = []
     for scores in data_2d:
         average.append(sum([s * w for s, w in zip(scores, weight)]))
     return average
 
 def analyze_data(data_1d):
-    # TODO) Derive summary of the given `data_1d`
     # Note) Please don't use NumPy and other libraries. Do it yourself.
     n = len(data_1d)
     mean = sum(data_1d) / n
