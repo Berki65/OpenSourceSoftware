@@ -175,7 +175,7 @@ class SmartMover(turtle.RawTurtle):
         # Increase speed based on level
         self.step_move = self.initial_step_move + (level - 1) * 3
 
-    # Updated AI to allow moving backward
+    # ChatGPT helped me with the AI logic
     def run_ai(self, opp_pos, opp_heading):
 
         # Get current position
@@ -279,7 +279,7 @@ class ManualMover(turtle.RawTurtle):
         self.keys_pressed = set()
         self.keys_enabled = True
 
-        # Register event handlers for key press and release
+        # Register event handlers for key presses and key releases
         self.canvas.bind('<KeyPress>', self.key_press)
         self.canvas.bind('<KeyRelease>', self.key_release)
         self.canvas.focus_set()
