@@ -1,5 +1,5 @@
 # Turtle Runaway Game: Berkis Turtle Catcher
-
+Project from Berkay Bentetik - 24170078
 ## Introduction
 This week's assignment was a game where a turtle is trying to catch another turtle. The game is played by using the arrow keys to move the turtle around the screen. The goal is to catch the other turtle before it escapes. The game is over when the turtle catches the other turtle or the other turtle escapes.
 
@@ -14,7 +14,7 @@ The game is over when the turtle catches the other turtle or the other turtle es
 
 ## Game Mechanics
 
-### I added the following mechanics to the game:
+### I added the following features to the game:
 - **Round based game:** The running turtle becomes faster after each round.
 - **Borders:** I added **borders** to the **"map"** so the turtles can't escape the screen.
 - **Time:** A time is displayed on the screen, but it doesn't affect the game.

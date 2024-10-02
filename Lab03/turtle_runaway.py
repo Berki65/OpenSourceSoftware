@@ -1,6 +1,8 @@
-'''
-B
-'''
+"""
+Assignment from Berkay Bentetik - 24170078
+Python Lab 03 - Turtle Runaway
+"""
+
 import tkinter as tk
 import turtle
 import time
