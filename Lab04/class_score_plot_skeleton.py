@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
     # Read both Korean and English class scores
     midterm_kr, final_kr = zip(*class_kr)
-    total_kr = [40/125*midterm + 60/100*final for (midterm, final) in class_kr]
+    total_kr = [40 / 125 * midterm + 60 / 100 * final for (midterm, final) in class_kr]
     midterm_en, final_en = zip(*class_en)
     total_en = [40 / 125 * midterm + 60 / 100 * final for (midterm, final) in class_en]
 
