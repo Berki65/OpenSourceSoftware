@@ -1,3 +1,8 @@
+"""
+Assignment from Berkay Bentetik - 24170078
+Python Lab 04 - Midterm and Final Exam Visualization
+"""
+
 import matplotlib.pyplot as plt
 
 def read_data(filename):
