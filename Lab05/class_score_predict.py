@@ -2,6 +2,7 @@
 Assignment from Berkay Bentetik - 24170078
 Python Lab 05 - Final Exam Score Prediction
 """
+
 import numpy as np
 import matplotlib.pyplot as plt
 
