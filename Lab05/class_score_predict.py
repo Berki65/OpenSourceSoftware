@@ -16,9 +16,9 @@ if __name__ == '__main__':
     data = np.vstack((class_kr, class_en))
 
     # Estimate a line, final = slope * midterm + y_intercept
-    X = np.column_stack((data[:, 0], np.ones(data.shape[0])))
+    x = np.column_stack((data[:, 0], np.ones(data.shape[0])))
     y = data[:, 1]
-    line = np.dot(np.linalg.pinv(X), y)
+    line = np.dot(np.linalg.pinv(x), y)
 
     # Predict scores
     final = lambda midterm: line[0] * midterm + line[1]
