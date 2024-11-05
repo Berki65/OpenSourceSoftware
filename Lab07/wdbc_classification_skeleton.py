@@ -1,7 +1,15 @@
+"""
+Assignment from Berkay Bentetik - 24170078
+Python Lab 07 - Breast Cancer Classification
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import (datasets, svm, metrics)
 from matplotlib.lines import Line2D # For the custom legend
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import ConfusionMatrixDisplay
+
 
 def load_wdbc_data(filename):
     class WDBCData:
@@ -15,32 +23,68 @@ def load_wdbc_data(filename):
     with open(filename) as f:
         for line in f.readlines():
             items = line.split(',')
-            wdbc.target.append(items[1])        # TODO #1) Add the true label (0 for M / 1 for others)
-            wdbc.data.append(items[2:])         # TODO #1) Add 30 attributes (as floating-point numbers)
+            diagnosis = 0 if items[1] == 'M' else 1
+            wdbc.target.append(diagnosis)
+
+            features = list(map(float, items[2:]))
+            wdbc.data.append(features)
         wdbc.data = np.array(wdbc.data)
+        wdbc.target = np.array(wdbc.target)
     return wdbc
 
 if __name__ == '__main__':
     # Load a dataset
-    wdbc = load_wdbc_data('data/wdbc.data')     # TODO #1) Implement 'load_wdbc_data()'
+    wdbc = load_wdbc_data('data/wdbc.data')
 
-    # Train a model
-    model = svm.SVC()                           # TODO #2) Find a better classifier (SVC accuracy: 0.902)
-    model.fit(wdbc.data, wdbc.target)
+    # Train a model SVM
+    modelS = svm.SVC()
+    modelS.fit(wdbc.data, wdbc.target)
 
-    # Test the model
-    predict = model.predict(wdbc.data)
-    accuracy = metrics.balanced_accuracy_score(wdbc.target, predict)
+    # Train a model Random Forest
+    modelF = RandomForestClassifier(n_estimators=100, random_state=42)
+    modelF.fit(wdbc.data, wdbc.target)
 
-    # TODO #3) Visualize the confusion matrix
+    # Test the model SVM
+    predictS = modelS.predict(wdbc.data)
+    accuracyS = metrics.balanced_accuracy_score(wdbc.target, predictS)
 
-    # Visualize testing results
+    # Test the model Random Forest
+    predictF = modelF.predict(wdbc.data)
+    accuracyF = metrics.balanced_accuracy_score(wdbc.target, predictF)
+
+    # Confusion Matrix SVM
+    cm = metrics.confusion_matrix(wdbc.target, predictS)
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=wdbc.target_names)
+    disp.plot()
+    plt.title('Confusion Matrix')
+    plt.show()
+
+    # Confusion Matrix Random Forest
+    cm = metrics.confusion_matrix(wdbc.target, predictF)
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=wdbc.target_names)
+    disp.plot(cmap=plt.cm.Blues)
+    plt.title('Confusion Matrix')
+    plt.show()
+
+    # Visualize testing results SVM
     cmap = np.array([(1, 0, 0), (0, 1, 0)])
     clabel = [Line2D([0], [0], marker='o', lw=0, label=wdbc.target_names[i], color=cmap[i]) for i in range(len(cmap))]
     for (x, y) in [(0, 1)]: # Not mandatory, but try [(i, i+1) for i in range(0, 30, 2)]
         plt.figure()
-        plt.title(f'My Classifier (Accuracy: {accuracy:.3f})')
-        plt.scatter(wdbc.data[:,x], wdbc.data[:,y], c=cmap[wdbc.target], edgecolors=cmap[predict])
+        plt.title(f'My Classifier (Accuracy: {accuracyF:.3f})')
+        plt.scatter(wdbc.data[:,x], wdbc.data[:,y], c=cmap[wdbc.target], edgecolors=cmap[predictS])
+        plt.xlabel(wdbc.feature_names[x])
+        plt.ylabel(wdbc.feature_names[y])
+        plt.legend(handles=clabel, framealpha=0.5)
+    plt.show()
+
+    # Visualize testing results Random Forest
+    cmap = np.array([(1, 0, 0), (0, 1, 0)])
+    clabel = [Line2D([0], [0], marker='o', lw=0, label=wdbc.target_names[i], color=cmap[i]) for i in range(len(cmap))]
+    for (x, y) in [(0, 1)]: # Not mandatory, but try [(i, i+1) for i in range(0, 30, 2)]
+        plt.figure()
+        plt.title(f'My Classifier (Accuracy: {accuracyF:.3f})')
+        plt.scatter(wdbc.data[:,x], wdbc.data[:,y], c=cmap[wdbc.target], edgecolors=cmap[predictF])
         plt.xlabel(wdbc.feature_names[x])
         plt.ylabel(wdbc.feature_names[y])
         plt.legend(handles=clabel, framealpha=0.5)
