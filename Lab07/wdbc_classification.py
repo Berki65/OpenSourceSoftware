@@ -71,7 +71,7 @@ if __name__ == '__main__':
     clabel = [Line2D([0], [0], marker='o', lw=0, label=wdbc.target_names[i], color=cmap[i]) for i in range(len(cmap))]
     for (x, y) in [(0, 1)]: # Not mandatory, but try [(i, i+1) for i in range(0, 30, 2)]
         plt.figure()
-        plt.title(f'My Classifier (Accuracy: {accuracyF:.3f})')
+        plt.title(f'My Classifier (Accuracy: {accuracyS:.3f})')
         plt.scatter(wdbc.data[:,x], wdbc.data[:,y], c=cmap[wdbc.target], edgecolors=cmap[predictS])
         plt.xlabel(wdbc.feature_names[x])
         plt.ylabel(wdbc.feature_names[y])
