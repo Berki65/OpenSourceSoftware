@@ -1,6 +1,6 @@
 """
 Assignment from Berkay Bentetik - 24170078
-Python Lab 06 - Breast Cancer Classification with Cross-validation
+Python Lab 8 - Breast Cancer Classification with Cross-validation
 """
 
 from sklearn import (datasets, tree, model_selection)
