@@ -25,6 +25,7 @@ if __name__ == '__main__':
     end_time = time.time()
     elapsed_time = end_time - start_time
 
+
     # Evaluate the model
     acc_train = np.mean(cv_results['train_score'])
     acc_test = np.mean(cv_results['test_score'])
